@@ -1,9 +1,26 @@
 #!/usr/bin/python
 
 import argparse
+import math
+
+"""
+Possibly use Kadane's algorithm?
+Seems to be good ol' subarrays messing with my head again
+"""
+
+debug = False
 
 def find_max_profit(prices):
-  pass
+  max_profit = -math.inf
+  min_value = prices[0]
+
+  for price in prices:
+    max_profit = max(max_profit, price - min_value) if price != min_value else max_profit
+    min_value = price if price < min_value else min_value
+    if debug:
+      print(f"max_profit: {max_profit}, min_value: {min_value}")
+
+  return max_profit
 
 
 if __name__ == '__main__':
