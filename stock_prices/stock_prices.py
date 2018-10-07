@@ -10,6 +10,10 @@ Seems to be good ol' subarrays messing with my head again
 
 debug = False
 
+# def find_max_profit_brute(prices):
+#   max_profit = -math.inf
+
+
 def find_max_profit(prices):
   max_profit = -math.inf
   min_value = prices[0]
