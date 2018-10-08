@@ -36,7 +36,6 @@ def recipe_batches(recipe, ingredients):
       max_batches = 0
       break
 
-
   return max_batches
 
 
