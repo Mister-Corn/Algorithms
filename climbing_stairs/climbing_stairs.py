@@ -7,16 +7,16 @@ def climbing_stairs(n, cache=None):
   num_ways = 0
   
   def inner_recurse(n):
-    global num_ways
+    nonlocal num_ways
 
     if n < 0:
       return 0
     elif n == 0:
-      num_ways = num_ways + 1
-      return 
+      num_ways += 1
+      return
     
     for step in steps:
-      return inner_recurse(n - step)
+      inner_recurse(n - step)
   
   inner_recurse(n)
   return num_ways
