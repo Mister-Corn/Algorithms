@@ -4,22 +4,24 @@ import sys
 
 def climbing_stairs(n, cache=None):
   steps = [1, 2, 3]
-  num_ways = 0
+  cache = [0 for i in range(n + 1)] if not cache else cache
   
-  def inner_recurse(n):
-    nonlocal num_ways
+  def inner_recurse(n, cache):
+    result = 0
 
     if n < 0:
       return 0
     elif n == 0:
-      num_ways += 1
-      return
+      return 1
     
     for step in steps:
-      inner_recurse(n - step)
+      result += cache[n - step] if cache[n - step] != 0 else inner_recurse(n - step, cache)
+    
+    cache[n] = result
+    return cache[n] if cache[n] != 0 else result
   
-  inner_recurse(n)
-  return num_ways
+  return inner_recurse(n, cache)
+  
  
 
 if __name__ == "__main__":
