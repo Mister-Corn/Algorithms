@@ -22,14 +22,14 @@ further keys if there are any.
 def recipe_batches(recipe, ingredients):
   max_batches = math.inf
 
-  for ingredient in recipe:
+  for ingredient in recipe: # `milk` `butter` `flour`
     if ingredient in ingredients:
       # Apparently, typecasting a float into an int rounds it down
       # https://stackoverflow.com/a/17142719
       # `math.floor` is another alternative
       batches = int(ingredients[ingredient] / recipe[ingredient])
       max_batches = batches if batches < max_batches else max_batches
-      if not batches:
+      if not batches: # 0, "", false, 
         break
     else:
       # We don't have an ingredient on hand, so we can't make any batches
